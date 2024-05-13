@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://do2xawxrjjv4k"]
+
+[ext_resource type="PackedScene" uid="uid://br2dbrxgh8ras" path="res://resources/components/stats_component.tscn" id="1_4a76l"]
+[ext_resource type="PackedScene" uid="uid://ckhkklchdsjyc" path="res://resources/components/health_component.tscn" id="2_e05lk"]
+[ext_resource type="PackedScene" uid="uid://nrkkkalv1wms" path="res://resources/components/stamina_component.tscn" id="3_y2pi1"]
+[ext_resource type="PackedScene" uid="uid://bj8kxwc2c68v3" path="res://resources/components/pain_component.tscn" id="4_txbcf"]
+[ext_resource type="PackedScene" uid="uid://cok6rogq2oxwg" path="res://resources/components/hurtbox_component.tscn" id="5_iijna"]
+[ext_resource type="PackedScene" uid="uid://dydi0v54f3k4q" path="res://resources/components/trail_component.tscn" id="6_4f4gn"]
+
+[sub_resource type="GDScript" id="GDScript_xikxg"]
+resource_name = "player"
+script/source = "class_name Player extends CharacterBody2D
+
+@export var speed : float = 275.0
+@export var accel : float = 25.0
+
+func _physics_process(delta):
+	var direction : Vector2 = Input.get_vector(\"left\", \"right\", \"up\", \"down\").normalized()
+	
+	#velocity = direction * speed
+	velocity.x = move_toward(velocity.x, speed * direction.x, accel)
+	velocity.y = move_toward(velocity.y, speed * direction.y, accel)
+	
+	# TODO: jump.
+
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fouc"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6l6wi"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D"]
+script = SubResource("GDScript_xikxg")
+speed = 180.0
+
+[node name="StatsComponent" parent="." instance=ExtResource("1_4a76l")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_e05lk")]
+
+[node name="StaminaComponent" parent="." instance=ExtResource("3_y2pi1")]
+
+[node name="PainComponent" parent="." instance=ExtResource("4_txbcf")]
+
+[node name="TrailComponent" parent="." instance=ExtResource("6_4f4gn")]
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("5_iijna")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("RectangleShape2D_1fouc")
+debug_color = Color(0.978746, 0, 0.393697, 0.42)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6l6wi")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-8, 0, 0, -8, 8, 0, 0, 8)
+
+[editable path="HurtboxComponent"]
