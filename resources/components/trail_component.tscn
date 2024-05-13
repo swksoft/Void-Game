@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dydi0v54f3k4q"]
+
+[ext_resource type="Texture2D" uid="uid://ydahoofjog4" path="res://icon.svg" id="1_08dru"]
+[ext_resource type="Script" path="res://resources/components/trail_component.gd" id="1_qk6fq"]
+
+[node name="TrailComponent" type="Line2D"]
+top_level = true
+width = 8.0
+default_color = Color(0.980129, 0, 0.432927, 1)
+texture = ExtResource("1_08dru")
+texture_mode = 1
+script = ExtResource("1_qk6fq")
+MAX_LENGHT = 60
+
+[node name="StartDeleting" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 0.016
+autostart = true
+
+[connection signal="timeout" from="StartDeleting" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="StartDeleting" to="." method="_on_start_deleting_timeout"]
+[connection signal="timeout" from="Delay" to="." method="_on_delay_timeout"]
