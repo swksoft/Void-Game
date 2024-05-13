@@ -1,0 +1,124 @@
+[gd_scene load_steps=2 format=3 uid="uid://baxoyxof5cb07"]
+
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_tppvs"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_tppvs")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.095
+grow_horizontal = 2
+
+[node name="PanelHP" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 25.0
+
+[node name="GridContainer" type="GridContainer" parent="Panel/PanelHP"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -12.5
+offset_right = 25.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="HPLabel" type="Label" parent="Panel/PanelHP/GridContainer"]
+layout_mode = 2
+text = "HP:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="Panel/PanelHP/GridContainer"]
+layout_mode = 2
+text = "<int>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_bottom = 125.0
+grow_horizontal = 0
+
+[node name="GridContainer" type="GridContainer" parent="Panel/Panel"]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 124.0
+columns = 2
+
+[node name="StatHPLabel" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "HP"
+
+[node name="HPstat" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "<int>"
+
+[node name="StatATKLabel" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "ATK"
+
+[node name="ATKstat" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "<float>"
+
+[node name="StatRNGLabel" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "RNG"
+
+[node name="RNGstat" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "<float>"
+
+[node name="StatDLYLabel" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "DLY "
+
+[node name="DLYstat" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "<float>"
+
+[node name="StatDPSLabel" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "DPS"
+
+[node name="DPSstat" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "<float>"
+
+[node name="StatABRLabel" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "ABR"
+
+[node name="ABRstat" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "<float>"
+
+[node name="StatQTYLabel" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "QTY"
+
+[node name="QTYstat" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "<int>"
+
+[node name="StatSPDLabel" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "SPD"
+
+[node name="SPDstat" type="Label" parent="Panel/Panel/GridContainer"]
+layout_mode = 2
+text = "<float>"
