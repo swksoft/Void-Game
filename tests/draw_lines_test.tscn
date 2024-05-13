@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3adjjcq1efnt"]
+
+[ext_resource type="Script" path="res://tests/draw_lines_test.gd" id="1_7v5dh"]
+[ext_resource type="Texture2D" uid="uid://ydahoofjog4" path="res://icon.svg" id="1_ihitt"]
+
+[node name="DrawLinesTest" type="Line2D"]
+top_level = true
+width = 32.0
+texture = ExtResource("1_ihitt")
+texture_mode = 1
+script = ExtResource("1_7v5dh")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn2yy7lqk4oh5"]
+
+[ext_resource type="PackedScene" uid="uid://c3adjjcq1efnt" path="res://tests/draw_lines_test.tscn" id="1_gj8wt"]
+[ext_resource type="Script" path="res://tests/test_mechanic.gd" id="1_vby0b"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_e01cc"]
+
+[node name="TestMechanic" type="Node2D"]
+script = ExtResource("1_vby0b")
+
+[node name="DrawLinesTest" parent="." instance=ExtResource("1_gj8wt")]
+
+[node name="StartPoint" type="Marker2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="StartPoint"]
+color = Color(0.264911, 0.539503, 0, 1)
+polygon = PackedVector2Array(-8, 0, 0, -8, 8, 0, 0, 8)
+
+[node name="FinishPoint" type="Marker2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="FinishPoint"]
+polygon = PackedVector2Array(-8, 0, 0, -8, 8, 0, 0, 8)
+
+[node name="NearestPoint" type="Marker2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="NearestPoint"]
+color = Color(0.894533, 0, 0.16115, 1)
+polygon = PackedVector2Array(-8, 0, 0, -8, 8, 0, 0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_e01cc")

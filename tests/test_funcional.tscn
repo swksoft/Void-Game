@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo4id2jp5eurn"]
+
+[ext_resource type="Script" path="res://tests/test_funcional.gd" id="1_iivfx"]
+[ext_resource type="PackedScene" uid="uid://f0rbu4hmw0tc" path="res://resources/grid_manager.tscn" id="2_cst1o"]
+[ext_resource type="PackedScene" uid="uid://do2xawxrjjv4k" path="res://entities/player/player.tscn" id="2_inb06"]
+[ext_resource type="PackedScene" uid="uid://baxoyxof5cb07" path="res://ui/hud.tscn" id="5_1ht3m"]
+
+[node name="TestFuncional" type="Node2D"]
+script = ExtResource("1_iivfx")
+metadata/_edit_vertical_guides_ = [300.0, 0.0, 25.0, 13.0]
+metadata/_edit_horizontal_guides_ = [0.0, 25.0, 12.0]
+
+[node name="ScoreManager" type="Node" parent="."]
+
+[node name="StatsManager" type="Node" parent="."]
+
+[node name="GridManager" parent="." instance=ExtResource("2_cst1o")]
+map_path = NodePath("..")
+player_path = NodePath("../Player")
+
+[node name="TextureRect" parent="GridManager" index="0"]
+offset_right = 600.0
+offset_bottom = 1050.0
+
+[node name="Player" parent="." instance=ExtResource("2_inb06")]
+position = Vector2(50, 150)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-250, -250)
+anchor_mode = 0
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 600
+limit_bottom = 1050
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="HUD" parent="." instance=ExtResource("5_1ht3m")]
+
+[editable path="GridManager"]
