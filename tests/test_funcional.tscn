@@ -19,15 +19,12 @@ map_path = NodePath("..")
 player_path = NodePath("../Player")
 
 [node name="TextureRect" parent="GridManager" index="0"]
+offset_left = -12.0
+offset_top = -13.0
 offset_right = 600.0
 offset_bottom = 1050.0
 
-[node name="Player" parent="." instance=ExtResource("2_inb06")]
-position = Vector2(50, 150)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-250, -250)
-anchor_mode = 0
+[node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 limit_left = 0
 limit_top = 0
@@ -38,6 +35,11 @@ position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[node name="Player" parent="." instance=ExtResource("2_inb06")]
+position = Vector2(50, 150)
+
 [node name="HUD" parent="." instance=ExtResource("5_1ht3m")]
+
+[node name="DebugIcon" type="Node" parent="."]
 
 [editable path="GridManager"]

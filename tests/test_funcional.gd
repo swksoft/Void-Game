@@ -3,8 +3,12 @@ extends Node2D
 var previous_line_points = []
 
 @onready var trail_line = $Player/TrailComponent
+@onready var camera_2d = $Camera2D
+@onready var player = $Player
 
 func _process(delta):
+	camera_2d.position = player.global_position
+	
 	var current_line_points = [global_position]  # Agrega el punto actual del nodo como el primer punto de la línea
 	
 	#print(current_line_points)
