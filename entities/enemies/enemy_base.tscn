@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn13uylmn5uo3"]
+
+[ext_resource type="PackedScene" uid="uid://br2dbrxgh8ras" path="res://resources/components/stats_component.tscn" id="1_7er1u"]
+[ext_resource type="Script" path="res://entities/enemies/enemy_base.gd" id="1_cnw4u"]
+[ext_resource type="PackedScene" uid="uid://cok6rogq2oxwg" path="res://resources/components/hurtbox_component.tscn" id="2_h82fv"]
+
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("stats_component")]
+script = ExtResource("1_cnw4u")
+stats_component = NodePath("StatsComponent")
+
+[node name="StatsComponent" parent="." instance=ExtResource("1_7er1u")]
+max_hp = 1
+max_spd = 100.0
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("2_h82fv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
