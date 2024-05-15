@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://yiw0c1c8lewe"]
+
+[ext_resource type="Script" path="res://entities/player/camera_player.gd" id="1_wbogv"]
+
+[node name="CameraPlayer" type="Camera2D"]
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 600
+limit_bottom = 1050
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("1_wbogv")
