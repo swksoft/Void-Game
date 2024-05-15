@@ -62,11 +62,9 @@ func _process(delta):
 			var create_box = calculate_bounding_box(res)
 			var collision_shape = create_collision_shape(create_box)
 			
-			
-			
 			# Crear un nodo CollisionShape2D y agregarlo a la escena actual
 			var collision_node = Node2D.new()
-			collision_node.position = player.global_position
+			collision_node.position = create_box.position * 25
 			collision_node.add_child(collision_shape)
 			add_child(collision_node)
 			
