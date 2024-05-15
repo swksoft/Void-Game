@@ -1,23 +1,274 @@
-[gd_scene load_steps=2 format=3 uid="uid://baxoyxof5cb07"]
+[gd_scene load_steps=4 format=3 uid="uid://baxoyxof5cb07"]
 
-[ext_resource type="Script" path="res://ui/hud.gd" id="1_tppvs"]
+[ext_resource type="Script" path="res://ui/ui_stat.gd" id="2_jbhva"]
+
+[sub_resource type="FontFile" id="FontFile_dgghs"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+cache/0/8/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/8/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/1/0/ascent = 0.0
+cache/0/1/0/descent = 0.0
+cache/0/1/0/underline_position = 0.0
+cache/0/1/0/underline_thickness = 0.0
+cache/0/1/0/scale = 1.0
+cache/0/1/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/2/0/ascent = 0.0
+cache/0/2/0/descent = 0.0
+cache/0/2/0/underline_position = 0.0
+cache/0/2/0/underline_thickness = 0.0
+cache/0/2/0/scale = 1.0
+cache/0/2/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/3/0/ascent = 0.0
+cache/0/3/0/descent = 0.0
+cache/0/3/0/underline_position = 0.0
+cache/0/3/0/underline_thickness = 0.0
+cache/0/3/0/scale = 1.0
+cache/0/3/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
+cache/0/4/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/5/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/6/0/ascent = 0.0
+cache/0/6/0/descent = 0.0
+cache/0/6/0/underline_position = 0.0
+cache/0/6/0/underline_thickness = 0.0
+cache/0/6/0/scale = 1.0
+cache/0/6/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/7/0/ascent = 0.0
+cache/0/7/0/descent = 0.0
+cache/0/7/0/underline_position = 0.0
+cache/0/7/0/underline_thickness = 0.0
+cache/0/7/0/scale = 1.0
+cache/0/7/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/9/0/ascent = 0.0
+cache/0/9/0/descent = 0.0
+cache/0/9/0/underline_position = 0.0
+cache/0/9/0/underline_thickness = 0.0
+cache/0/9/0/scale = 1.0
+cache/0/9/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/9/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/10/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/10/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/11/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/12/0/kerning_overrides/8/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/9/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/10/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/12/0 = Vector2(0, 0)
+
+[sub_resource type="Theme" id="Theme_tfm08"]
+default_font = SubResource("FontFile_dgghs")
+default_font_size = 8
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_tppvs")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.095
 grow_horizontal = 2
 
-[node name="PanelHP" type="Panel" parent="Panel"]
+[node name="PanelHP" type="Panel" parent="Control/Panel"]
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 25.0
 
-[node name="GridContainer" type="GridContainer" parent="Panel/PanelHP"]
+[node name="GridContainer" type="GridContainer" parent="Control/Panel/PanelHP"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,19 +283,19 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="HPLabel" type="Label" parent="Panel/PanelHP/GridContainer"]
+[node name="HPLabel" type="Label" parent="Control/Panel/PanelHP/GridContainer"]
 layout_mode = 2
 text = "HP:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthLabel" type="Label" parent="Panel/PanelHP/GridContainer"]
+[node name="HealthLabel" type="Label" parent="Control/Panel/PanelHP/GridContainer"]
 layout_mode = 2
 text = "<int>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="Panel"]
+[node name="Panel" type="Panel" parent="Control/Panel"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -53,72 +304,89 @@ offset_left = -75.0
 offset_bottom = 125.0
 grow_horizontal = 0
 
-[node name="GridContainer" type="GridContainer" parent="Panel/Panel"]
+[node name="StatContainer" type="GridContainer" parent="Control/Panel/Panel"]
 layout_mode = 0
 offset_right = 74.0
 offset_bottom = 124.0
+theme = SubResource("Theme_tfm08")
 columns = 2
 
-[node name="StatHPLabel" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="StatHPLabel" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "HP"
 
-[node name="HPstat" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="HPstat" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "<int>"
+script = ExtResource("2_jbhva")
+stat_name = "hp"
 
-[node name="StatATKLabel" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="StatATKLabel" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "ATK"
 
-[node name="ATKstat" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="ATKstat" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "<float>"
+script = ExtResource("2_jbhva")
+stat_name = "atk"
 
-[node name="StatRNGLabel" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="StatRNGLabel" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "RNG"
 
-[node name="RNGstat" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="RNGstat" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "<float>"
+script = ExtResource("2_jbhva")
+stat_name = "rng"
 
-[node name="StatDLYLabel" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="StatDLYLabel" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "DLY "
 
-[node name="DLYstat" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="DLYstat" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "<float>"
+script = ExtResource("2_jbhva")
+stat_name = "dly"
 
-[node name="StatDPSLabel" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="StatDPSLabel" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "DPS"
 
-[node name="DPSstat" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="DPSstat" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "<float>"
+script = ExtResource("2_jbhva")
+stat_name = "dps"
 
-[node name="StatABRLabel" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="StatABRLabel" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "ABR"
 
-[node name="ABRstat" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="ABRstat" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "<float>"
+script = ExtResource("2_jbhva")
+stat_name = "abr"
 
-[node name="StatQTYLabel" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="StatQTYLabel" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "QTY"
 
-[node name="QTYstat" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="QTYstat" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "<int>"
+script = ExtResource("2_jbhva")
+stat_name = "qty"
 
-[node name="StatSPDLabel" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="StatSPDLabel" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "SPD"
 
-[node name="SPDstat" type="Label" parent="Panel/Panel/GridContainer"]
+[node name="SPDstat" type="Label" parent="Control/Panel/Panel/StatContainer"]
 layout_mode = 2
 text = "<float>"
+script = ExtResource("2_jbhva")
+stat_name = "spd"
