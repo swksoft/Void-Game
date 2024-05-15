@@ -14,7 +14,12 @@ config/name="Void Game"
 config/tags=PackedStringArray("jam")
 run/main_scene="res://tests/test_funcional.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0.215371, 0.0633759, 0.237703, 1)
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameEvents="*res://autoloads/GameEvents.gd"
 
 [display]
 
@@ -72,3 +77,4 @@ textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=2
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.266667, 0.133333, 0.266667, 1)

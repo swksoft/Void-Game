@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bdmlxfmqvko7a"]
+
+[node name="UpgradeOption" type="ColorRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "+stat"

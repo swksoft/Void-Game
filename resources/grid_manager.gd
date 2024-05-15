@@ -1,4 +1,6 @@
+@icon("res://te-metes-el-dedo-por-el-clitoris.svg")
 extends Node2D
+
 
 @export var map_path : NodePath
 @export var player_path : NodePath
@@ -36,73 +38,110 @@ func _process(delta):
 	# POSITION ON MAP
 	var grid_x = round(player.global_position.x / grid_size) * grid_size
 	var grid_y = round(player.global_position.y / grid_size) * grid_size
-	
-	# Verificar si la coordenada de la cuadrícula actual es diferente a la anterior
-	
 	# POSITION ON GRID
 	var relative_x = int(player.global_position.x / grid_size)
 	var relative_y = int(player.global_position.y / grid_size)
 	
 	var current_grid_coord = Vector2(relative_x, relative_y)
 	
+	# Verificar si la coordenada de la cuadrícula actual es diferente a la anterior
 	if current_grid_coord != previous_grid_coord:
 		previous_grid_coord = current_grid_coord
 		
 		var new_aux = Vector2(relative_x, relative_y)
 		
 		if set_grind.has(new_aux):
+			# FIXME : NO SE ESTÁ BORRANDO EL PATH
 			intersection_point = new_aux
-			var res = get_path_to_intersection(set_grind, intersection_point, head)
-		
-			print("RESULTADO FINAL: ", res)
 			
-			#delete_all(set_grind)
+			#print("HEAD: ", head)
+			#print("CURRENT PATH: ", set_grind)
+			#print("INTERSECTION: ", intersection_point)
+			
+			var res = get_segment_to_intersection(head, set_grind, intersection_point)
+			var create_box = calculate_bounding_box(res)
+			var collision_shape = create_collision_shape(create_box)
+			
+			
+			
+			# Crear un nodo CollisionShape2D y agregarlo a la escena actual
+			var collision_node = Node2D.new()
+			collision_node.position = player.global_position
+			collision_node.add_child(collision_shape)
+			add_child(collision_node)
+			
+			#print("Intersection")
+			#print("RESULTADO FINAL: ", res)
+			
+			delete_all(set_grind)
 		else:
 			set_grind.push_back(new_aux)
 			head = new_aux
-			
+			#print(head)
 
 		# DEBUG
-		spawn_texture(grid_x, grid_y)
+		#spawn_texture(grid_x, grid_y)
 		
 		#print("Cuadrícula: (" + str(grid_x) + ", " + str(grid_y) + ") | Posición relativa: (" + str(relative_x) + ", " + str(relative_y) + ")")
-		print(set_grind, "\n")
+		#print(set_grind, "\n")
 
-func get_path_to_intersection(points: Array, intersection_point: Vector2, head: Vector2) -> Array:
-	var path = []
-	var head_index = points.find(head)
+func calculate_bounding_box(segment: Array) -> Rect2:
+	var multiplier = 25
+	
+	if segment.size() == 0:
+		return Rect2()
+	
+	var min_x = segment[0].x
+	var max_x = segment[0].x
+	var min_y = segment[0].y
+	var max_y = segment[0].y
+	
+	for point in segment:
+		if point.x < min_x:
+			min_x = point.x
+		if point.x > max_x:
+			max_x = point.x
+		if point.y < min_y:
+			min_y = point.y
+		if point.y > max_y:
+			max_y = point.y
+	
+	var width = (max_x - min_x) * multiplier
+	var height = (max_y - min_y) * multiplier
+	var top_left = Vector2(min_x, min_y)
+	
+	return Rect2(top_left, Vector2(width, height))
 
-	# Si no se encuentra la cabeza en el array de puntos, regresar un array vacío
-	if head_index == -1:
-		return path
+func create_collision_shape(rect: Rect2) -> CollisionShape2D:
+	var collision_shape = CollisionShape2D.new()
+	var rectangle_shape = RectangleShape2D.new()
+	
+	rectangle_shape.extents = rect.size / 2  # La mitad del ancho y largo
+	collision_shape.shape = rectangle_shape
+	collision_shape.position = rect.position + rect.size / 2  # Centrar el rectángulo
+	
+	return collision_shape
 
-	var intersection_index = -1
+func get_segment_to_intersection(head: Vector2, path: Array, intersection: Vector2) -> Array:
+	var segment = []
 
-	# Buscar el punto de intersección después de la cabeza
-	for i in range(head_index + 1, points.size()):
-		if points[i] == intersection_point:
-			intersection_index = i
+	# Encontrar el índice de la intersección en el path
+	var intersection_index = path.find(intersection)
+	
+	# Verificar que la intersección se encuentra en el path
+	if intersection_index == -1:
+		print("Intersección no encontrada en el path")
+		return segment
+	
+	# Agregar los puntos desde head hasta la intersección (inclusive)
+	for i in range(intersection_index, len(path)):
+		segment.append(path[i])
+		if path[i] == head:
 			break
-
-	# Si no se encuentra el punto de intersección después de la cabeza, buscar antes de la cabeza
-	if intersection_index == -1:
-		for i in range(head_index):
-			if points[i] == intersection_point:
-				intersection_index = i
-				break
-
-	# Si todavía no se encuentra el punto de intersección, regresar un array vacío
-	if intersection_index == -1:
-		return path
-
-	# Construir el subarray que va desde la cabeza hasta el punto de intersección
-	if head_index < intersection_index:
-		path = points.slice(head_index, intersection_index + 1)
-	else:
-		path = points.slice(head_index, points.size()) + points.slice(0, intersection_index + 1)
-
-	return path
-
+	
+	print_debug(segment)
+	
+	return segment
 
 func delete_all(array : Array):
 	array.clear()
