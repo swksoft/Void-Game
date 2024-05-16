@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://crod1hoybh4nq"]
+
+[ext_resource type="Script" path="res://tests/attraction_test.gd" id="1_0eqg0"]
+[ext_resource type="PackedScene" uid="uid://do2xawxrjjv4k" path="res://entities/player/player.tscn" id="1_knd2y"]
+[ext_resource type="Script" path="res://tests/BlackHoleTest.gd" id="2_dyefx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u8ww"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33w8u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xpct"]
+radius = 100.0
+
+[node name="AttractionTest" type="Node2D"]
+script = ExtResource("1_0eqg0")
+
+[node name="Player" parent="." instance=ExtResource("1_knd2y")]
+
+[node name="BlackHolePhysics" type="Area2D" parent="."]
+position = Vector2(400, 275)
+gravity_space_override = 3
+gravity_point = true
+gravity = 2666.64
+linear_damp_space_override = 1
+linear_damp = 1.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackHolePhysics"]
+shape = SubResource("RectangleShape2D_7u8ww")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(325, 100)
+gravity_scale = 0.5
+can_sleep = false
+freeze_mode = 1
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_33w8u")
+
+[node name="BlackHole" type="Area2D" parent="."]
+position = Vector2(125, 275)
+script = ExtResource("2_dyefx")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackHole"]
+shape = SubResource("CircleShape2D_8xpct")
+
+[node name="Marker" type="Marker2D" parent="BlackHole"]
+
+[connection signal="body_entered" from="BlackHole" to="BlackHole" method="_on_body_entered"]
+[connection signal="body_exited" from="BlackHole" to="BlackHole" method="_on_body_exited"]
