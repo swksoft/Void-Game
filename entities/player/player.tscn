@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://do2xawxrjjv4k"]
+[gd_scene load_steps=12 format=3 uid="uid://do2xawxrjjv4k"]
 
 [ext_resource type="Script" path="res://entities/player/player_stats_component.gd" id="1_2ubde"]
 [ext_resource type="PackedScene" uid="uid://br2dbrxgh8ras" path="res://resources/components/stats_component.tscn" id="1_4a76l"]
@@ -12,6 +12,18 @@ size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6l6wi"]
 radius = 8.0
+
+[sub_resource type="Animation" id="Animation_3psdc"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_omnb1"]
+resource_name = "jump"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yu11x"]
+_data = {
+"idle": SubResource("Animation_3psdc"),
+"jump": SubResource("Animation_omnb1")
+}
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("stats_component") groups=["Player"]]
 z_index = 2
@@ -44,5 +56,11 @@ debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-8, 0, 0, -8, 8, 0, 0, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yu11x")
+}
+autoplay = "idle"
 
 [editable path="HurtboxComponent"]
