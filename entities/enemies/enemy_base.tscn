@@ -1,19 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn13uylmn5uo3"]
+[gd_scene load_steps=9 format=3 uid="uid://cn13uylmn5uo3"]
 
 [ext_resource type="PackedScene" uid="uid://br2dbrxgh8ras" path="res://resources/components/stats_component.tscn" id="1_7er1u"]
 [ext_resource type="Script" path="res://entities/enemies/enemy_base.gd" id="1_cnw4u"]
 [ext_resource type="PackedScene" uid="uid://cok6rogq2oxwg" path="res://resources/components/hurtbox_component.tscn" id="2_h82fv"]
+[ext_resource type="PackedScene" uid="uid://ckhkklchdsjyc" path="res://resources/components/health_component.tscn" id="3_07h6a"]
+[ext_resource type="PackedScene" uid="uid://cohokbbgdqm0w" path="res://resources/components/hitbox_component.tscn" id="5_h7dvl"]
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("stats_component")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcnuy"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sirmn"]
+size = Vector2(50, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0cp7d"]
+radius = 25.0
+
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("stats_component", "health_component")]
+collision_layer = 2
+collision_mask = 8
 script = ExtResource("1_cnw4u")
 stats_component = NodePath("StatsComponent")
+health_component = NodePath("HealthComponent")
 
 [node name="StatsComponent" parent="." instance=ExtResource("1_7er1u")]
 max_hp = 1
-max_spd = 100.0
+max_spd = 50.0
 
-[node name="HurtboxComponent" parent="." instance=ExtResource("2_h82fv")]
+[node name="HealthComponent" parent="." instance=ExtResource("3_07h6a")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("stats_component", "health_component", "parent") instance=ExtResource("2_h82fv")]
+monitoring = false
+monitorable = false
+stats_component = NodePath("../StatsComponent")
+health_component = NodePath("../HealthComponent")
+parent = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("RectangleShape2D_kcnuy")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("5_h7dvl")]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_sirmn")
+debug_color = Color(0.9807, 0, 0.377435, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0cp7d")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -25, -25, 25, 25, 25)
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
