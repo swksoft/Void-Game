@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6yqq43tcohq4"]
+
+[ext_resource type="Script" path="res://entities/items/item.gd" id="1_x6k5c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vfib"]
+radius = 15.0
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_x6k5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1vfib")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -50.0
+offset_right = 29.0
+offset_bottom = -25.0
+text = "<item>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
