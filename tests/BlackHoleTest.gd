@@ -1,15 +1,10 @@
 extends Area2D
 
-@onready var marker = $Marker
-
+# FIXME: YOU SHOULDNT BE CAPABLE OF CREATING BLACK HOLES INSIDE THEM
 
 func _on_body_entered(body):
-	
-	
-	#body.marker_2d.position = self.global_position # FIXME: AQUI NO
 	body.attract = true
-	body.center_gravity = marker.global_position
-
+	body.center_gravity = self.global_position
 
 func _on_body_exited(body):
 	body.attract = false

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw8pp2gtys8j2"]
+
+[ext_resource type="Script" path="res://tests/BlackHoleTest.gd" id="1_ujsns"]
+
+[node name="BlackHole" type="Area2D"]
+position = Vector2(125, 275)
+script = ExtResource("1_ujsns")
+metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

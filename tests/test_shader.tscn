@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm02uxp4s02b1"]
+
+[ext_resource type="Texture2D" uid="uid://bqxik2gu7lyi" path="res://assets/placeholders/Screenshot_613.png" id="1_fnia7"]
+[ext_resource type="PackedScene" uid="uid://dwm26u4rel3bq" path="res://assets/blackhole/hole_sprite.tscn" id="1_xoadt"]
+
+[node name="TestShader" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fnia7")
+
+[node name="HoleSprite" parent="." instance=ExtResource("1_xoadt")]
+position = Vector2(45, 25)
+scale = Vector2(0.820313, 0.779297)

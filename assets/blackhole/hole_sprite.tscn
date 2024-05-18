@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwm26u4rel3bq"]
+
+[ext_resource type="Shader" path="res://shaders/blackhole.gdshader" id="1_li56g"]
+[ext_resource type="Texture2D" uid="uid://ydahoofjog4" path="res://icon.svg" id="2_cfd7f"]
+[ext_resource type="Texture2D" uid="uid://cn6gy3ef7o2rp" path="res://assets/blackhole/circle.png" id="3_wtuku"]
+
+[sub_resource type="Curve" id="Curve_wyjl7"]
+min_value = -0.5
+_data = [Vector2(0, 0.00055635), 0.0, 0.0, 0, 0, Vector2(0.0593723, 0.934928), 0.0, 0.0, 0, 0, Vector2(0.0963874, 0.793104), 0.0, 0.0, 0, 0, Vector2(0.157092, 0.209121), 0.0, 0.0, 0, 0, Vector2(0.331803, -0.199666), 0.0, 0.0, 0, 0, Vector2(0.354012, 0.309233), 0.0, 0.0, 0, 0, Vector2(0.531685, 0.00055635), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_hfuns"]
+curve = SubResource("Curve_wyjl7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfc45"]
+shader = ExtResource("1_li56g")
+shader_parameter/strenght = 0.5
+shader_parameter/curve = SubResource("CurveTexture_hfuns")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6yy1k"]
+
+[sub_resource type="Animation" id="Animation_pg68s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_y2mou"]
+resource_name = "rotate"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vu5aw"]
+_data = {
+"RESET": SubResource("Animation_pg68s"),
+"rotate": SubResource("Animation_y2mou")
+}
+
+[node name="HoleSprite" type="Sprite2D"]
+material = SubResource("ShaderMaterial_qfc45")
+scale = Vector2(0.8125, 1)
+texture = ExtResource("2_cfd7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_6yy1k")
+rotation = 3.14159
+scale = Vector2(0.0915815, 0.1125)
+texture = ExtResource("3_wtuku")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vu5aw")
+}
+autoplay = "rotate"
