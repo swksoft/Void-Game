@@ -1,5 +1,11 @@
 extends Area2D
 class_name HitboxComponent
 
-func _on_hit():
-	print_debug("hit")
+@export var attacker : Node2D
+@export var damage: float = 0
+
+func target_player():
+	set_collision_layer_value(2, true)
+
+func target_enemy():
+	set_collision_layer_value(1, true)
