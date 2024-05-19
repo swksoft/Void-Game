@@ -2,20 +2,14 @@ extends CanvasLayer
 
 # TODO: ADD SCORE
 
-var hp : int
-var atk : int
-
-@onready var hp_stat = $Panel/Panel/StatContainer/HPstat
-@onready var atk_stat = $Panel/Panel/StatContainer/ATKstat
-@onready var rng_stat = $Panel/Panel/StatContainer/RNGstat
-@onready var dly_stat = $Panel/Panel/StatContainer/DLYstat
-@onready var dps_stat = $Panel/Panel/StatContainer/DPSstat
-@onready var abr_stat = $Panel/Panel/StatContainer/ABRstat
-@onready var qty_stat = $Panel/Panel/StatContainer/QTYstat
-@onready var spd_stat = $Panel/Panel/StatContainer/SPDstat
+@onready var panel_game_over = $Control/PanelContainer
 
 func _ready():
-	pass # Replace with function body.
+	panel_game_over.visible = false
+	GameEvents.game_over.connect(on_game_over)
 
-func _process(delta):
-	pass
+func _on_button_pressed():
+	get_tree().reload_current_scene()
+
+func on_game_over():
+	panel_game_over.visible = true
