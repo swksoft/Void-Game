@@ -1,35 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo4id2jp5eurn"]
+[gd_scene load_steps=8 format=3 uid="uid://bo4id2jp5eurn"]
 
 [ext_resource type="PackedScene" uid="uid://s4mf3ifeof5u" path="res://resources/arena_manager.tscn" id="1_3u64j"]
 [ext_resource type="PackedScene" uid="uid://f0rbu4hmw0tc" path="res://resources/grid_manager.tscn" id="2_cst1o"]
 [ext_resource type="PackedScene" uid="uid://do2xawxrjjv4k" path="res://entities/player/player.tscn" id="2_inb06"]
 [ext_resource type="PackedScene" uid="uid://yiw0c1c8lewe" path="res://entities/player/camera_player.tscn" id="2_ivacq"]
 [ext_resource type="PackedScene" uid="uid://baxoyxof5cb07" path="res://ui/hud.tscn" id="5_1ht3m"]
+[ext_resource type="Texture2D" uid="uid://cvjxgkk5butni" path="res://assets/textures/cell25x25.png" id="6_pqbwa"]
+[ext_resource type="PackedScene" uid="uid://cn13uylmn5uo3" path="res://entities/enemies/enemy_base.tscn" id="7_etp6i"]
 
 [node name="TestFuncional" type="Node2D"]
-metadata/_edit_vertical_guides_ = [300.0, 0.0, 25.0, 13.0]
-metadata/_edit_horizontal_guides_ = [0.0, 25.0, 12.0]
+metadata/_edit_vertical_guides_ = [300.0, 0.0, 25.0, 13.0, 600.0]
+metadata/_edit_horizontal_guides_ = [0.0, 25.0, 12.0, 1050.0]
 
 [node name="ArenaManager" parent="." instance=ExtResource("1_3u64j")]
+
+[node name="DebugIcon" type="Node" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 600.0
+offset_bottom = 1051.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pqbwa")
+stretch_mode = 1
 
 [node name="GridManager" parent="." instance=ExtResource("2_cst1o")]
 map_path = NodePath("..")
 player_path = NodePath("../Player")
 
-[node name="TextureRect" parent="GridManager" index="0"]
-offset_left = -12.0
-offset_top = -13.0
-offset_right = 600.0
-offset_bottom = 1050.0
+[node name="BlackHole" parent="GridManager" index="0" node_paths=PackedStringArray("attacker")]
+attacker = NodePath("../../Player")
 
 [node name="CameraPlayer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_ivacq")]
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_inb06")]
-position = Vector2(50, 150)
+position = Vector2(100, 525)
 
 [node name="HUD" parent="." instance=ExtResource("5_1ht3m")]
 
-[node name="DebugIcon" type="Node" parent="."]
+[node name="BasicEnemy" parent="." instance=ExtResource("7_etp6i")]
+position = Vector2(375, 325)
 
 [editable path="GridManager"]
