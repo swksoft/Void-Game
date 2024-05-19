@@ -9,7 +9,10 @@ signal wave_enemy_limit_reached
 signal enemy_died(wave_spawned: bool)
 signal stat_update
 signal enemy_hit(enemy: BasicEnemy)
-signal player_ready(player: Player)
+signal player_ready
+signal remove_portals
+signal player_hit
+signal game_over
 
 func emit_wave_start():
 	print("emit_wave_start")
@@ -32,8 +35,17 @@ func emit_stat_update():
 	stat_update.emit()
 
 func emit_enemy_hit(enemy: BasicEnemy):
-	print("emit_enemy_hit")
 	enemy_hit.emit(enemy)
 
 func emit_player_ready():
 	player_ready.emit()
+
+func emit_remove_portals():
+	print("Remove portals")
+	remove_portals.emit()
+
+func emit_player_hit(player : Player):
+	player_hit.emit(player)
+
+func emit_game_over():
+	game_over.emit()
