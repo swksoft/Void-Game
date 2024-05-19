@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal update_hud_hp
+
 @export var stats_component : StatsComponent
 @export var accel : float = 25.0
 @export var turn_velocity : float = 3.0
@@ -30,7 +32,7 @@ func player_inputs(delta):
 		GameEvents.emit_remove_portals()
 
 func _physics_process(delta):
-	print(center_gravity)
+	#print(center_gravity)
 	#print(stats_component.hp)
 	
 	var direction = Vector2.RIGHT.rotated(rotation)
@@ -67,4 +69,9 @@ func _on_animation_player_animation_finished(anim_name):
 		animation.play("idle")
 
 func _on_health_component_died():
+	GameEvents.emit_game_over()
 	get_tree().paused = true
+
+func _on_hurtbox_component_damage_animation_signal():
+	emit_signal("update_hud_hp")
+	animation.play("damage")

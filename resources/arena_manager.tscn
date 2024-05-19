@@ -1,9 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://s4mf3ifeof5u"]
+[gd_scene load_steps=7 format=3 uid="uid://s4mf3ifeof5u"]
 
 [ext_resource type="Script" path="res://resources/arena_manager.gd" id="1_rbogr"]
 
-[node name="ArenaManager" type="Node"]
+[sub_resource type="Curve2D" id="Curve2D_ma767"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -50, -50, 0, 0, 0, 0, 550, -50, 0, 0, 0, 0, 550, 575, 0, 0, 0, 0, -50, 575, 0, 0, 0, 0, -50, -50)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3l56o"]
+size = Vector2(700, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dhtq"]
+size = Vector2(25, 675)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waf8b"]
+size = Vector2(25, 675)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4k8p"]
+size = Vector2(700, 25)
+
+[node name="ArenaManager" type="Node2D"]
 script = ExtResource("1_rbogr")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+autostart = true
+
+[node name="SpawnPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ma767")
+
+[node name="EnemyPawn" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(521.845, -50)
+progress = 571.83
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(250, -87.5)
+shape = SubResource("RectangleShape2D_3l56o")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-87.5, 262.5)
+shape = SubResource("RectangleShape2D_5dhtq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(587.5, 263)
+shape = SubResource("RectangleShape2D_waf8b")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(250, 612.5)
+shape = SubResource("RectangleShape2D_p4k8p")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

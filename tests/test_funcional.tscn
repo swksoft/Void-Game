@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo4id2jp5eurn"]
+[gd_scene load_steps=13 format=3 uid="uid://bo4id2jp5eurn"]
 
 [ext_resource type="PackedScene" uid="uid://s4mf3ifeof5u" path="res://resources/arena_manager.tscn" id="1_3u64j"]
 [ext_resource type="PackedScene" uid="uid://f0rbu4hmw0tc" path="res://resources/grid_manager.tscn" id="2_cst1o"]
@@ -8,11 +8,51 @@
 [ext_resource type="Texture2D" uid="uid://cvjxgkk5butni" path="res://assets/textures/cell25x25.png" id="6_pqbwa"]
 [ext_resource type="PackedScene" uid="uid://cn13uylmn5uo3" path="res://entities/enemies/enemy_base.tscn" id="7_etp6i"]
 
+[sub_resource type="Curve2D" id="Curve2D_mr4br"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -50, -50, 0, 0, 0, 0, 600, -50, 0, 0, 0, 0, 600, 1050, 0, 0, 0, 0, -50, 1050, 0, 0, 0, 0, -50, -50)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3utpm"]
+size = Vector2(775, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a1bj"]
+size = Vector2(25, 1150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw7lx"]
+size = Vector2(25, 1150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgax2"]
+size = Vector2(775, 25)
+
 [node name="TestFuncional" type="Node2D"]
 metadata/_edit_vertical_guides_ = [300.0, 0.0, 25.0, 13.0, 600.0]
 metadata/_edit_horizontal_guides_ = [0.0, 25.0, 12.0, 1050.0]
 
 [node name="ArenaManager" parent="." instance=ExtResource("1_3u64j")]
+
+[node name="SpawnPath" parent="ArenaManager" index="1"]
+curve = SubResource("Curve2D_mr4br")
+
+[node name="EnemyPawn" parent="ArenaManager/SpawnPath" index="0"]
+position = Vector2(521.834, -50)
+
+[node name="CollisionShape2D" parent="ArenaManager/StaticBody2D" index="0"]
+position = Vector2(287.5, -87.5)
+shape = SubResource("RectangleShape2D_3utpm")
+
+[node name="CollisionShape2D2" parent="ArenaManager/StaticBody2D" index="1"]
+position = Vector2(-87.5, 500)
+shape = SubResource("RectangleShape2D_0a1bj")
+
+[node name="CollisionShape2D3" parent="ArenaManager/StaticBody2D" index="2"]
+position = Vector2(662.5, 500)
+shape = SubResource("RectangleShape2D_bw7lx")
+
+[node name="CollisionShape2D4" parent="ArenaManager/StaticBody2D" index="3"]
+position = Vector2(287.5, 1087.5)
+shape = SubResource("RectangleShape2D_bgax2")
 
 [node name="DebugIcon" type="Node" parent="."]
 
@@ -35,16 +75,23 @@ player_path = NodePath("../Player")
 
 [node name="BlackHole" parent="GridManager" index="0" node_paths=PackedStringArray("attacker")]
 attacker = NodePath("../../Player")
+damage = 1.0
 
 [node name="CameraPlayer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_ivacq")]
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_inb06")]
 position = Vector2(100, 525)
+accel = null
+turn_velocity = null
 
 [node name="HUD" parent="." instance=ExtResource("5_1ht3m")]
 
 [node name="BasicEnemy" parent="." instance=ExtResource("7_etp6i")]
 position = Vector2(375, 325)
 
+[connection signal="get_center_signal" from="GridManager" to="Player" method="_on_grid_manager_get_center_signal"]
+[connection signal="update_hud_hp" from="Player" to="HUD" method="_on_player_update_hud_hp"]
+
+[editable path="ArenaManager"]
 [editable path="GridManager"]

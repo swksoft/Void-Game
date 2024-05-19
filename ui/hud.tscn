@@ -248,6 +248,7 @@ default_font = SubResource("FontFile_dgghs")
 default_font_size = 8
 
 [node name="HUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_05a1s")
 
 [node name="Control" type="Control" parent="."]
@@ -412,5 +413,40 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Retry"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control"]
+modulate = Color(1, 1, 1, 0.396078)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/h_separation = 140
+columns = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer2/GridContainer"]
+layout_mode = 2
+text = "- WASD/Arrows: Move"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/PanelContainer2/GridContainer"]
+layout_mode = 2
+text = "- Do some black holes!"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/PanelContainer2/GridContainer"]
+layout_mode = 2
+text = "- Space: Jump"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Control/PanelContainer2/GridContainer"]
+layout_mode = 2
+text = "- Shift: Close black holes"
+vertical_alignment = 1
 
 [connection signal="pressed" from="Control/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

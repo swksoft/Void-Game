@@ -2,6 +2,7 @@ class_name HealthComponent extends Node
 
 signal died
 signal changed
+signal life_down
 
 @export var stats_component : StatsComponent
 
@@ -28,3 +29,4 @@ func check_death():
 func set_hp(new_hp: float):
 	stats_component.hp = new_hp
 	changed.emit()
+	life_down.emit()

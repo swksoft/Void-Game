@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" path="res://tests/BlackHoleTest.gd" id="1_ujsns"]
 
-[node name="BlackHole" type="Area2D" groups=["BlackHole"]]
-collision_layer = 8
+[node name="BlackHole" type="Area2D"]
 collision_mask = 3
 script = ExtResource("1_ujsns")
+damage = null
 metadata/_edit_group_ = true
-
-[node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

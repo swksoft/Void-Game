@@ -5,9 +5,9 @@ extends Node
 var stats_component : StatsComponent
 
 func _ready():
-	GameEvents.player_ready.connect(on_player_ready) # NO FUNCA
+	#GameEvents.player_ready.connect(on_player_ready) # NO FUNCA
 	
-	#on_player_ready()
+	on_player_ready()
 
 func update():
 	self.text = str(stats_component["max_" + stat_name])

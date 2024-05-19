@@ -7,10 +7,24 @@ class_name BasicEnemy extends CharacterBody2D
 var attract := false
 var center_gravity = null
 
+var scene_width = 600 
+var scene_height = 1050
+
+var attraction_force = Vector2.ZERO
+
 # COMPORTAMIENTO DESEADO
 # 1) APARECER EN ESCENA (CHASE)
 # 2) SEGUIR AL JUGADOR CON CIERTO RETARDO
 # 3) PASADO UNA CANTIDAD RANDOM DE TIEMPO, SE QUEDARÁ QUIETO UNA CANTIDAD ALEATORIA DE TIEMPO, PARA LUEGO SEGUIR PERSIGUIENDO
+
+func check_boundaries():
+	if position.x <= 0 or position.x >= scene_width:
+		velocity.x = -velocity.x
+		rotation = PI - rotation
+
+	if position.y <= 0 or position.y >= scene_height:
+		velocity.y = -velocity.y
+		rotation = -rotation
 
 func behavior(delta):
 	var player = get_tree().get_first_node_in_group("Player") as Player
@@ -21,6 +35,9 @@ func behavior(delta):
 	#velocity.x = move_toward(velocity.x, player.global_position.x, stats_component.max_spd * delta)
 	#velocity.y = move_toward(velocity.y, player.global_position.y, stats_component.max_spd * delta)
 	#velocity = velocity.move_toward(player.global_position, stats_component.spd * delta)
+	
+	position = position.move_toward(player.global_position, stats_component.spd * delta)
+	
 	if attract != true:
 		pass
 		#position = position.move_toward(player.global_position, stats_component.max_spd * delta)

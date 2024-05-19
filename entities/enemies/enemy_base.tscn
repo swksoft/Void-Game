@@ -15,7 +15,8 @@ size = Vector2(50, 50)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0cp7d"]
 radius = 25.0
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("stats_component", "health_component")]
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("stats_component", "health_component") groups=["Enemy"]]
+z_index = 2
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_cnw4u")
@@ -26,11 +27,11 @@ health_component = NodePath("HealthComponent")
 max_hp = 1
 max_spd = 50.0
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_07h6a")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("3_07h6a")]
+stats_component = NodePath("../StatsComponent")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("stats_component", "health_component", "parent") instance=ExtResource("2_h82fv")]
-monitoring = false
-monitorable = false
+collision_mask = 8
 stats_component = NodePath("../StatsComponent")
 health_component = NodePath("../HealthComponent")
 parent = NodePath("..")
@@ -39,10 +40,7 @@ parent = NodePath("..")
 shape = SubResource("RectangleShape2D_kcnuy")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("5_h7dvl")]
-collision_layer = 0
-collision_mask = 0
-monitoring = false
-monitorable = false
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_sirmn")
@@ -52,6 +50,7 @@ debug_color = Color(0.9807, 0, 0.377435, 0.42)
 shape = SubResource("CircleShape2D_0cp7d")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.746592, 0.728272, 0.0265867, 1)
 polygon = PackedVector2Array(0, -25, -25, 25, 25, 25)
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
